@@ -49,10 +49,13 @@ class ntile:
             return True
         return False
 
-    def newBoardMove(self, move: str):
+    def newBoardMove(self, move: str, prune: bool = False):
         # creates a duplicate of the board and performs the move on the duplicate, returns the duplicate
         new_board = ntile(self.n, self.board)
         new_board.move(move)
+        if prune:
+            if new_board.board == self.board:
+                return None
         return new_board
 
     def is_solved(self):

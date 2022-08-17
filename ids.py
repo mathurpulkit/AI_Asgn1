@@ -13,9 +13,10 @@ def search(initial_state: ntile, depth: int):
             return None
     for move in ['U', 'D', 'L', 'R']:
         new_state = initial_state.newBoardMove(move)
-        result = search(new_state, depth-1)
-        if result is not None:
-            return [move] + result # we return this, as list of moves is traced in reverse order
+        if new_state is not None:
+            result = search(new_state, depth-1)
+            if result is not None:
+                return [move] + result # we return this, as list of moves is traced in reverse order
     return None
 
 def ids(initial_state: ntile):
