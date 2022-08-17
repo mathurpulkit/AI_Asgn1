@@ -3,7 +3,7 @@
 import copy
 
 class ntile:
-    def __init__(self,n: int, initial_state: ntile = None):
+    def __init__(self, n: int, initial_state = None):
         self.n = n
         if initial_state is None:
             self.board = [[i for i in range(self.n)] for j in range(self.n)]
@@ -11,8 +11,10 @@ class ntile:
                 for j in range(self.n):
                     self.board[i][j] += i*self.n
             self.board[self.n-1][self.n-1] = 0
-        else:
+        elif isinstance(initial_state, ntile):
             self.board = copy.deepcopy(initial_state.state)
+        elif isinstance(initial_state, list):
+            self.board = copy.deepcopy(initial_state)
         return
 
     def move(self, move: str):

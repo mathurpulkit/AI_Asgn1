@@ -1,5 +1,6 @@
 #implements the iterative deepening search algorithm on the n-tile puzzle
 #duplicates are not handled
+import ntile
 
 initial_depth = 1
 max_depth = 20
