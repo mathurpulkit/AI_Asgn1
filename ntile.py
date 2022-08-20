@@ -12,7 +12,7 @@ class ntile:
                     self.board[i][j] += i*self.n
             self.board[self.n-1][self.n-1] = 0
         elif isinstance(initial_state, ntile):
-            self.board = copy.deepcopy(initial_state.state)
+            self.board = copy.deepcopy(initial_state.board)
         elif isinstance(initial_state, list):
             self.board = copy.deepcopy(initial_state)
         return
@@ -59,10 +59,15 @@ class ntile:
         return new_board
 
     def is_solved(self):
-        for i in range(self.n):
+        for i in range(self.n-1):
             for j in range(self.n):
-                if self.board[i][j] != i*self.n + j + 1 or (i == self.n-1 and j == self.n-1 and self.board[i][j] == 0):
+                if self.board[i][j] != i*self.n + j + 1:
                     return False
+        for j in range(self.n-1):
+            if self.board[self.n-1][j] != (self.n-1)*self.n + j + 1:
+                return False
+        if self.board[self.n-1][self.n-1] != 0:
+            return False
         return True
 
     
