@@ -1,20 +1,33 @@
 # defines the general class of a board with n*n tiles
 # we will use 0 to denote empty tile
 import copy
+import random
+from time import time
+random.seed(time)
 
 class ntile:
     def __init__(self, n: int, initial_state = None):
         self.n = n
-        if initial_state is None:
+        if initial_state is None: # if no initial state is provided, generate a solved board
             self.board = [[i for i in range(self.n)] for j in range(self.n)]
-            for i in range(1,self.n):
+            for i in range(self.n):
                 for j in range(self.n):
-                    self.board[i][j] += i*self.n
+                    self.board[i][j] += i*self.n + 1
             self.board[self.n-1][self.n-1] = 0
         elif isinstance(initial_state, ntile):
             self.board = copy.deepcopy(initial_state.board)
         elif isinstance(initial_state, list):
             self.board = copy.deepcopy(initial_state)
+        else: # generate a random board
+            self.board = [[i for i in range(self.n)] for j in range(self.n)]
+            for i in range(self.n):
+                for j in range(self.n):
+                    self.board[i][j] += i*self.n + 1
+            self.board[self.n-1][self.n-1] = 0
+            for i in range(self.n*self.n):
+                rand_i = random.randint(0, self.n-1)
+                rand_j = random.randint(0, self.n-1)
+                self.board[rand_i][rand_j], self.board[self.n-1][self.n-1] = self.board[self.n-1][self.n-1], self.board[rand_i][rand_j]
         return
 
     def move(self, move: str):
