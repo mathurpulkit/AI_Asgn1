@@ -1,7 +1,7 @@
 #runs the main code for bidirectional search
 import bidir
 import ntile
-
+import time
 initial_state = [[1,8,2],
                  [0,4,3],
                  [7,6,5]]
@@ -19,9 +19,15 @@ third_ex = [[15,2,1,12],
             [3,4,13,0]]
 game3 = ntile.ntile(4, third_ex)
 
+tic = time.time()
 ans = bidir.bidirectional_search(game1)
+toc = time.time()
+print(ans, "\ntime:", toc-tic)
+tic = time.time()
 ans2 = bidir.bidirectional_search(game2)
+toc = time.time()
+print(ans2, "\ntime:", toc-tic)
+tic = time.time()
 ans3 = bidir.bidirectional_search(game3)
-print(ans)
-print(ans2)
-print(ans3)
+toc = time.time()
+print(ans3, "\ntime:", toc-tic)
