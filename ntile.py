@@ -82,5 +82,10 @@ class ntile:
         if self.board[self.n-1][self.n-1] != 0:
             return False
         return True
-
     
+    def board_str(self):
+        # returns a string representation of the board
+        s = ''
+        for i in range(self.n):
+            s += " ".join([str(x) for x in self.board[i]]) + " "
+        return s
