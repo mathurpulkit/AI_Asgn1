@@ -1,6 +1,8 @@
 # AI Assignment 1
 
-**Problem Statement:** Solve the n-tile problem, given an initial state of the board.
+The problem was solved as part of an assignment for CSL412: Artificial Intelligence
+
+**Problem Statement:** Solve the n-tile problem, given the initial state of the board.
 
 **Algorithms Implemented:**
 - Iterative Deepening Search
